@@ -1,0 +1,27 @@
+name: custom_adaptive_dialog
+description: A new Flutter package project.
+version: 1.0.0
+author:
+homepage:
+
+environment:
+  sdk: ">=2.7.0 <3.0.0"
+  flutter: ">=1.17.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  uuid: ^2.2.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  plugin:
+    platforms:
+      android:
+        package: pl.xezolpl.custom_adaptive_dialog
+        pluginClass: AdaptiveDialog
+      ios:
+        pluginClass: AdaptiveDialog
