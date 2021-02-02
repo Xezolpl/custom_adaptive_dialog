@@ -41,9 +41,9 @@ class AdaptiveDialog implements IAdaptiveDialog {
       this.customBody,
       this.actions,
       this.backgroundColor,
-      this.centerTexts = false,
-      this.barrierDismissible = false,
-      this.fullyCapitalized = true,
+      this.centerTexts,
+      this.barrierDismissible,
+      this.fullyCapitalized,
       this.destructiveColor,
       this.borderRadius,
       this.routeName})
