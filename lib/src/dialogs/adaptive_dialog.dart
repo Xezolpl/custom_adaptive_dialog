@@ -14,7 +14,7 @@ abstract class IAdaptiveDialog {
 class AdaptiveDialog implements IAdaptiveDialog {
   final DialogStyle style;
   final String title;
-  final String bodyText;
+  final String message;
   final Widget customTitle;
   final Widget customBody;
   final List<AdaptiveDialogAction> actions;
@@ -36,7 +36,7 @@ class AdaptiveDialog implements IAdaptiveDialog {
   AdaptiveDialog(
       {this.style,
       this.title,
-      this.bodyText,
+      this.message,
       this.customTitle,
       this.customBody,
       this.actions,
@@ -50,7 +50,7 @@ class AdaptiveDialog implements IAdaptiveDialog {
       : _dialogInstance = style.isCupertinoStyle()
             ? CustomCupertinoDialog(
                 title: title,
-                bodyText: bodyText,
+                message: message,
                 customTitle: customTitle,
                 actions: actions == null
                     ? null
@@ -63,7 +63,7 @@ class AdaptiveDialog implements IAdaptiveDialog {
                 routeName: routeName)
             : CustomMaterialDialog(
                 title: title,
-                bodyText: bodyText,
+                message: message,
                 customTitle: customTitle,
                 actions: actions == null
                     ? null

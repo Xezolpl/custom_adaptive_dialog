@@ -5,7 +5,7 @@ import 'adaptive_dialog.dart';
 
 class CustomMaterialDialog implements IAdaptiveDialog {
   final String title;
-  final String bodyText;
+  final String message;
   final Widget customTitle;
   final Widget customBody;
   final List<Widget> actions;
@@ -17,7 +17,7 @@ class CustomMaterialDialog implements IAdaptiveDialog {
 
   CustomMaterialDialog(
       {this.title,
-      this.bodyText,
+      this.message,
       this.customTitle,
       this.customBody,
       this.actions,
@@ -50,10 +50,10 @@ class CustomMaterialDialog implements IAdaptiveDialog {
                         ),
                       )),
             content: customBody ??
-                (bodyText == null
+                (message == null
                     ? null
                     : Text(
-                        bodyText,
+                        message,
                         textAlign: textAlign,
                       )),
             actions: actions,

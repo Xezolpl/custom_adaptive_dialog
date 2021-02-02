@@ -12,7 +12,7 @@ abstract class AdaptiveDialogs {
     BorderRadius borderRadius,
     bool centerTexts = false,
     String title,
-    String loadingText,
+    String loadingMessage,
     Widget customTitle,
     Widget customLoadingText,
     DialogStyle style,
@@ -26,7 +26,7 @@ abstract class AdaptiveDialogs {
         : CircularProgressIndicator();
     Widget body = indicator;
     Widget loadingTextWidget = customLoadingText ??
-        Text(loadingText, style: TextStyle(color: Colors.grey[600]));
+        Text(loadingMessage, style: TextStyle(color: Colors.grey[600]));
 
     switch (indicatorPossition) {
       case IndicatorPosition.left:
@@ -82,7 +82,7 @@ abstract class AdaptiveDialogs {
 
   static IAdaptiveDialog getOkAdaptiveDialog({
     String title,
-    String bodyText,
+    String message,
     Widget customTitle,
     Widget customBody,
     //Other customizations
@@ -101,7 +101,7 @@ abstract class AdaptiveDialogs {
     return AdaptiveDialog(
         title: title,
         customTitle: customTitle,
-        bodyText: bodyText,
+        message: message,
         customBody: customBody,
         barrierDismissible: barrierDismissible,
         centerTexts: centerTexts,
@@ -121,7 +121,7 @@ abstract class AdaptiveDialogs {
 
   static IAdaptiveDialog getOkCancelAdaptiveDialog({
     String title,
-    String bodyText,
+    String message,
     Widget customTitle,
     Widget customBody,
     //Other customizations
@@ -145,7 +145,7 @@ abstract class AdaptiveDialogs {
     return AdaptiveDialog(
         title: title,
         customTitle: customTitle,
-        bodyText: bodyText,
+        message: message,
         customBody: customBody,
         barrierDismissible: barrierDismissible,
         centerTexts: centerTexts,

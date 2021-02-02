@@ -5,7 +5,7 @@ import 'adaptive_dialog.dart';
 
 class CustomCupertinoDialog implements IAdaptiveDialog {
   final String title;
-  final String bodyText;
+  final String message;
   final Widget customTitle;
   final Widget customBody;
   final List<Widget> actions;
@@ -15,7 +15,7 @@ class CustomCupertinoDialog implements IAdaptiveDialog {
 
   CustomCupertinoDialog(
       {this.title,
-      this.bodyText,
+      this.message,
       this.customTitle,
       this.customBody,
       this.actions,
@@ -45,7 +45,7 @@ class CustomCupertinoDialog implements IAdaptiveDialog {
           content: Padding(
             padding: const EdgeInsets.only(top: 4.0),
             child: customBody ??
-                (bodyText == null
+                (message == null
                     ? null
                     : Column(
                         crossAxisAlignment: centerTexts
@@ -56,7 +56,7 @@ class CustomCupertinoDialog implements IAdaptiveDialog {
                             height: 8,
                           ),
                           Text(
-                            bodyText,
+                            message,
                             textAlign: textAlign,
                           ),
                         ],
