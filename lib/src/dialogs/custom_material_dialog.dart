@@ -61,11 +61,13 @@ class CustomMaterialDialog implements IAdaptiveDialog {
   @override
   Future<void> show(BuildContext context) async {
     //Text align for all the texts
-    TextAlign textAlign = centerTexts ? TextAlign.center : TextAlign.start;
+    TextAlign textAlign = (centerTexts == null || centerTexts == false)
+        ? TextAlign.start
+        : TextAlign.center;
 
     return await showDialog(
         context: context,
-        barrierDismissible: barrierDismissible,
+        barrierDismissible: barrierDismissible ?? true,
         routeSettings:
             routeName == null ? null : RouteSettings(name: routeName),
         builder: (context) {

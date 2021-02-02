@@ -25,8 +25,8 @@ class AdaptiveDialogAction {
       BuildContext context, String routeName) {
     return CupertinoDialogAction(
       child: Text(label),
-      isDefaultAction: isDefaultAction,
-      isDestructiveAction: isDestructiveAction,
+      isDefaultAction: isDefaultAction ?? false,
+      isDestructiveAction: isDestructiveAction ?? false,
       //TODO: Enable custom text style for cupertino if we will be able to customize its background color
       //textStyle: textStyle ?? TextStyle(),
       onPressed: () {
@@ -41,21 +41,26 @@ class AdaptiveDialogAction {
     @required BuildContext context,
     @required String routeName,
     Color destructiveColor,
-    bool fullyCapitalizedForMaterial = false,
+    bool fullyCapitalizedForMaterial,
   }) {
     return TextButton(
       child: Text(
-        fullyCapitalizedForMaterial ? label.toUpperCase() : label,
+        (fullyCapitalizedForMaterial == null ||
+                fullyCapitalizedForMaterial == true)
+            ? label.toUpperCase()
+            : label,
         style: textStyle?.copyWith(
-              color: isDestructiveAction
-                  ? (destructiveColor ?? Colors.red[600])
-                  : null,
+              color:
+                  (isDestructiveAction == null || isDestructiveAction == false)
+                      ? null
+                      : (destructiveColor ?? Colors.red[600]),
             ) ??
             TextStyle(
               fontSize: 15,
-              color: isDestructiveAction
-                  ? (destructiveColor ?? Colors.red[600])
-                  : Colors.lightBlue[400],
+              color:
+                  (isDestructiveAction == null || isDestructiveAction == false)
+                      ? Colors.lightBlue[400]
+                      : (destructiveColor ?? Colors.red[600]),
             ),
       ),
       onPressed: () {
