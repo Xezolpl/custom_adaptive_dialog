@@ -88,6 +88,8 @@ class AdaptiveDialog implements IAdaptiveDialog {
             : CustomMaterialDialog(
                 title: title,
                 message: message,
+                destructiveColor: destructiveColor,
+                fullyCapitalized: fullyCapitalized,
                 customTitle: customTitle,
                 actions: actions,
                 backgroundColor: backgroundColor,
