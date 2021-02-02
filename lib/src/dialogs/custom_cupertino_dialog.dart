@@ -1,6 +1,7 @@
 import 'package:custom_adaptive_dialog/src/action/adaptive_dialog_action.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:uuid/uuid.dart';
 
 import 'adaptive_dialog.dart';
 
@@ -38,7 +39,8 @@ class CustomCupertinoDialog implements IAdaptiveDialog {
       this.actions,
       this.barrierDismissible,
       this.centerTexts,
-      this.routeName});
+      String routeName})
+      : this.routeName = routeName ?? Uuid().v4();
 
   ///Show the dialog by [showCupertinoDialog]
   @override
