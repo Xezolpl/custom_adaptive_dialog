@@ -70,9 +70,10 @@ class CustomCupertinoDialog implements IAdaptiveDialog {
                 (message == null
                     ? SizedBox.shrink()
                     : Column(
-                        crossAxisAlignment: centerTexts
-                            ? CrossAxisAlignment.center
-                            : CrossAxisAlignment.start,
+                        crossAxisAlignment:
+                            (centerTexts == null || centerTexts == true)
+                                ? CrossAxisAlignment.center
+                                : CrossAxisAlignment.start,
                         children: [
                           SizedBox(
                             height: 8,
