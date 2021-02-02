@@ -11,26 +11,54 @@ abstract class IAdaptiveDialog {
   void hide(BuildContext context);
 }
 
+///Returns class with customized adaptive dialog. It will decide to be cupertino
+///or material based on [style] or if its null - on Platform.
+///Show the dialog by [show()] method or hide it by [hide()];
 class AdaptiveDialog implements IAdaptiveDialog {
-  final DialogStyle style;
+  ///Title string with default TextStyle, will be omitted if [customTitle!=null]
   final String title;
+
+  ///Message string with default TextStyle, will be omitted if [customBody!=null]
   final String message;
+
+  ///Custom title widget in place of title
   final Widget customTitle;
+
+  ///Custom body widget in place of content
   final Widget customBody;
+
+  ///Bottom clickable actions (buttons)
   final List<AdaptiveDialogAction> actions;
+
+  ///Is dialog dismissible by pressing free space around dialog
+  ///*default Material-true, Cupertino-false*
   final bool barrierDismissible;
-  final String routeName;
-  //Centers title and bodyText for material style
+
+  ///Whether to center texts (does not work for customTitle and customBody)
+  ///*default Material-false, Cupertino-true*
   final bool centerTexts;
-  //Capitalizes title and bodyText for material style
+
+  ///Specific route name to operate on that route by Navigator (popUntil, etc.)
+  ///*default unique by uuid*
+  final String routeName;
+
+  ///Capitalizes title and message for material style *default true*
   final bool fullyCapitalized;
-  //Custom destructive action color for material style
+
+  ///Custom destructive action color for material style *default Colors.red[600]*
   final Color destructiveColor;
-  //Border radius for material style
+
+  ///Border radius for material style *default BorderRadius.circular(4)*
   final BorderRadius borderRadius;
-  //Custom background color for material style
+
+  ///Custom background color for material style *default based on style*
   final Color backgroundColor;
 
+  ///If you want to use specific style (Cupertino/Material) no matter of Platform
+  ///then specify that there
+  final DialogStyle style;
+
+  ///Instance of the dialog based on [style]
   final IAdaptiveDialog _dialogInstance;
 
   AdaptiveDialog(
@@ -69,11 +97,13 @@ class AdaptiveDialog implements IAdaptiveDialog {
                 barrierDismissible: barrierDismissible,
                 routeName: routeName);
 
+  ///Show the adaptive dialog
   @override
   Future<void> show(BuildContext context) async {
     return await _dialogInstance.show(context);
   }
 
+  ///Hide the adaptive dialog
   @override
   void hide(BuildContext context) async {
     return _dialogInstance.hide(context);

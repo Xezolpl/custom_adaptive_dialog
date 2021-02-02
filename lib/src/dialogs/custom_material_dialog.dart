@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:uuid/uuid.dart';
 import 'adaptive_dialog.dart';
 
-///Returns class with customized cupertino dialog. Show it by [show()] method or hide by [hide()];
+///Returns class with customized material dialog. Show it by [show()] method or hide by [hide()];
 class CustomMaterialDialog implements IAdaptiveDialog {
   ///Title string with default TextStyle, will be omitted if [customTitle!=null]
   final String title;

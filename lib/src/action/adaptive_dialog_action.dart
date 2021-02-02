@@ -27,7 +27,7 @@ class AdaptiveDialogAction {
       child: Text(label),
       isDefaultAction: isDefaultAction,
       isDestructiveAction: isDestructiveAction,
-      //TODO: Enable it after background customization
+      //TODO: Enable custom text style for cupertino if we will be able to customize its background color
       //textStyle: textStyle ?? TextStyle(),
       onPressed: () {
         if (onPressed != null) onPressed();
