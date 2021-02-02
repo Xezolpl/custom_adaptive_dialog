@@ -17,7 +17,8 @@ abstract class AdaptiveDialogs {
     Widget customLoadingText,
     DialogStyle style,
     String routeName,
-    IndicatorPosition indicatorPossition = IndicatorPosition.left,
+    IndicatorPosition cupertinoIndicatorPossition = IndicatorPosition.bottom,
+    IndicatorPosition materialIndicatorPossition = IndicatorPosition.left,
   }) {
     Widget indicator = style.isCupertinoStyle()
         ? CupertinoActivityIndicator(
@@ -27,7 +28,9 @@ abstract class AdaptiveDialogs {
     Widget body = indicator;
     Widget loadingTextWidget = customLoadingText ??
         Text(loadingMessage, style: TextStyle(color: Colors.grey[600]));
-
+    var indicatorPossition = style.isCupertinoStyle()
+        ? cupertinoIndicatorPossition
+        : materialIndicatorPossition;
     switch (indicatorPossition) {
       case IndicatorPosition.left:
         {
