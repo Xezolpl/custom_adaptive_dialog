@@ -26,7 +26,7 @@ class CustomMaterialDialog implements IAdaptiveDialog {
       this.actions,
       this.barrierDismissible = false,
       this.centerTexts = false,
-      this.fullyCapitalized = false,
+      this.fullyCapitalized = true,
       this.destructiveColor,
       this.backgroundColor,
       this.borderRadius,
