@@ -10,7 +10,7 @@ abstract class AdaptiveDialogs {
   static IAdaptiveDialog getLoadingAdaptiveDialog({
     Color backgroundColor,
     BorderRadius borderRadius,
-    bool centerTexts = false,
+    bool centerTexts,
     String title,
     String loadingMessage,
     Widget customTitle,
@@ -91,12 +91,13 @@ abstract class AdaptiveDialogs {
     String routeName,
     DialogStyle style,
     BorderRadius borderRadius,
-    bool centerTexts = false,
-    bool barrierDismissible = true,
-    bool fullyCapitalized = true,
+    bool centerTexts,
+    bool barrierDismissible,
+    bool fullyCapitalized,
     //Ok button
     @required String okLabel,
     TextStyle okTextStyle,
+    bool isOkDestructive = false,
     Function() onOkPressed,
   }) {
     return AdaptiveDialog(
@@ -115,6 +116,7 @@ abstract class AdaptiveDialogs {
         actions: [
           AdaptiveDialogAction(
               label: okLabel,
+              isDestructiveAction: isOkDestructive,
               textStyle: okTextStyle,
               onPressed: onOkPressed,
               isDefaultAction: true)
@@ -132,9 +134,9 @@ abstract class AdaptiveDialogs {
     String routeName,
     DialogStyle style,
     BorderRadius borderRadius,
-    bool centerTexts = false,
-    bool barrierDismissible = true,
-    bool fullyCapitalized = true,
+    bool centerTexts,
+    bool barrierDismissible,
+    bool fullyCapitalized,
     //Ok button
     @required String okLabel,
     bool isOkDestructive = false,
