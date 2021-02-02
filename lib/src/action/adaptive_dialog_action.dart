@@ -47,12 +47,14 @@ class AdaptiveDialogAction {
       child: Text(
         fullyCapitalizedForMaterial ? label.toUpperCase() : label,
         style: textStyle?.copyWith(
-              color: isDestructiveAction ? destructiveColor : null,
+              color: isDestructiveAction
+                  ? (destructiveColor ?? Colors.red[600])
+                  : null,
             ) ??
             TextStyle(
               fontSize: 15,
               color: isDestructiveAction
-                  ? destructiveColor
+                  ? (destructiveColor ?? Colors.red[600])
                   : Colors.lightBlue[400],
             ),
       ),

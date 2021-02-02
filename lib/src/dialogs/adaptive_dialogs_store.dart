@@ -86,6 +86,7 @@ abstract class AdaptiveDialogs {
     Widget customTitle,
     Widget customBody,
     //Other customizations
+    Color destructiveColor,
     Color backgroundColor,
     String routeName,
     DialogStyle style,
@@ -109,6 +110,7 @@ abstract class AdaptiveDialogs {
         borderRadius: borderRadius,
         routeName: routeName,
         style: style,
+        destructiveColor: destructiveColor,
         fullyCapitalized: fullyCapitalized,
         actions: [
           AdaptiveDialogAction(
@@ -126,6 +128,7 @@ abstract class AdaptiveDialogs {
     Widget customBody,
     //Other customizations
     Color backgroundColor,
+    Color destructiveColor,
     String routeName,
     DialogStyle style,
     BorderRadius borderRadius,
@@ -146,6 +149,7 @@ abstract class AdaptiveDialogs {
     return AdaptiveDialog(
         title: title,
         customTitle: customTitle,
+        destructiveColor: destructiveColor,
         message: message,
         customBody: customBody,
         barrierDismissible: barrierDismissible,
