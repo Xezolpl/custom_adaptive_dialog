@@ -1,3 +1,4 @@
+import 'package:custom_adaptive_dialog/src/action/adaptive_dialog_action.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -8,7 +9,7 @@ class CustomCupertinoDialog implements IAdaptiveDialog {
   final String message;
   final Widget customTitle;
   final Widget customBody;
-  final List<Widget> actions;
+  final List<AdaptiveDialogAction> actions;
   final bool barrierDismissible;
   final bool centerTexts;
   final String routeName;
@@ -62,7 +63,12 @@ class CustomCupertinoDialog implements IAdaptiveDialog {
                         ],
                       )),
           ),
-          actions: actions ?? [],
+          actions: actions == null
+              ? []
+              : actions
+                  .map((a) =>
+                      a.convertToCupertinoDialogAction(context, routeName))
+                  .toList(),
           //TODO: Enable customization on IOS
           //backgroundColor: backgroundColor,
           //shape: RoundedRectangleBorder(

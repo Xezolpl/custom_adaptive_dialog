@@ -1,3 +1,4 @@
+import 'package:custom_adaptive_dialog/src/action/adaptive_dialog_action.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:uuid/uuid.dart';
@@ -8,10 +9,12 @@ class CustomMaterialDialog implements IAdaptiveDialog {
   final String message;
   final Widget customTitle;
   final Widget customBody;
-  final List<Widget> actions;
+  final List<AdaptiveDialogAction> actions;
   final bool barrierDismissible;
-  final Color backgroundColor;
   final bool centerTexts;
+  final bool fullyCapitalized;
+  final Color destructiveColor;
+  final Color backgroundColor;
   final BorderRadius borderRadius;
   final String routeName;
 
@@ -23,6 +26,8 @@ class CustomMaterialDialog implements IAdaptiveDialog {
       this.actions,
       this.barrierDismissible = false,
       this.centerTexts = false,
+      this.fullyCapitalized = false,
+      this.destructiveColor,
       this.backgroundColor,
       this.borderRadius,
       String routeName})
@@ -56,7 +61,15 @@ class CustomMaterialDialog implements IAdaptiveDialog {
                         message,
                         textAlign: textAlign,
                       )),
-            actions: actions,
+            actions: actions == null
+                ? null
+                : actions
+                    .map((a) => a.convertToMaterialDialogAction(
+                        context: context,
+                        routeName: routeName,
+                        destructiveColor: destructiveColor,
+                        fullyCapitalizedForMaterial: fullyCapitalized))
+                    .toList(),
             backgroundColor: backgroundColor,
             shape: RoundedRectangleBorder(
               borderRadius: borderRadius ?? BorderRadius.circular(4.0),

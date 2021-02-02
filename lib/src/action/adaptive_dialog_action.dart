@@ -21,20 +21,27 @@ class AdaptiveDialogAction {
 
   final TextStyle textStyle;
 
-  Widget convertToCupertinoDialogAction() {
+  Widget convertToCupertinoDialogAction(
+      BuildContext context, String routeName) {
     return CupertinoDialogAction(
       child: Text(label),
       isDefaultAction: isDefaultAction,
       isDestructiveAction: isDestructiveAction,
       //TODO: Enable it after background customization
       //textStyle: textStyle ?? TextStyle(),
-      onPressed: onPressed ?? () {},
+      onPressed: () {
+        if (onPressed != null) onPressed();
+        //Pops this route
+        Navigator.of(context).popUntil((r) => r.settings.name != routeName);
+      },
     );
   }
 
   Widget convertToMaterialDialogAction({
-    @required Color destructiveColor,
-    @required bool fullyCapitalizedForMaterial,
+    @required BuildContext context,
+    @required String routeName,
+    Color destructiveColor,
+    bool fullyCapitalizedForMaterial = false,
   }) {
     return TextButton(
       child: Text(
@@ -49,7 +56,11 @@ class AdaptiveDialogAction {
                   : Colors.lightBlue[400],
             ),
       ),
-      onPressed: onPressed ?? () {},
+      onPressed: () {
+        if (onPressed != null) onPressed();
+        //Pops this route
+        Navigator.of(context).popUntil((r) => r.settings.name != routeName);
+      },
     );
   }
 }

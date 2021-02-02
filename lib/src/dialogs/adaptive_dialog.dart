@@ -52,11 +52,7 @@ class AdaptiveDialog implements IAdaptiveDialog {
                 title: title,
                 message: message,
                 customTitle: customTitle,
-                actions: actions == null
-                    ? null
-                    : actions
-                        .map((a) => a.convertToCupertinoDialogAction())
-                        .toList(),
+                actions: actions,
                 customBody: customBody,
                 centerTexts: centerTexts,
                 barrierDismissible: barrierDismissible,
@@ -65,13 +61,7 @@ class AdaptiveDialog implements IAdaptiveDialog {
                 title: title,
                 message: message,
                 customTitle: customTitle,
-                actions: actions == null
-                    ? null
-                    : actions
-                        .map((a) => a.convertToMaterialDialogAction(
-                            destructiveColor: destructiveColor,
-                            fullyCapitalizedForMaterial: fullyCapitalized))
-                        .toList(),
+                actions: actions,
                 backgroundColor: backgroundColor,
                 borderRadius: borderRadius,
                 customBody: customBody,

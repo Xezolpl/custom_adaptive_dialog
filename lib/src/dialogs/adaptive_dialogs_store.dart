@@ -134,11 +134,12 @@ abstract class AdaptiveDialogs {
     bool fullyCapitalized = true,
     //Ok button
     @required String okLabel,
+    bool isOkDestructive = false,
     TextStyle okTextStyle,
     Function() onOkPressed,
     //Cancel button
-    bool isCancelDestructive = false,
     @required String cancelLabel,
+    bool isCancelDestructive = false,
     TextStyle cancelTextStyle,
     Function() onCancelPressed,
   }) {
@@ -158,12 +159,13 @@ abstract class AdaptiveDialogs {
           AdaptiveDialogAction(
               label: cancelLabel,
               textStyle: cancelTextStyle,
-              onPressed: onCancelPressed,
-              isDestructiveAction: isCancelDestructive),
+              isDestructiveAction: isCancelDestructive,
+              onPressed: onCancelPressed),
           AdaptiveDialogAction(
               label: okLabel,
               textStyle: okTextStyle,
               onPressed: onOkPressed,
+              isDestructiveAction: isOkDestructive,
               isDefaultAction: true),
         ]);
   }
