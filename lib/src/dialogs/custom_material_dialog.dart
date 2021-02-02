@@ -4,19 +4,43 @@ import 'package:flutter/material.dart';
 import 'package:uuid/uuid.dart';
 import 'adaptive_dialog.dart';
 
+///Returns class with customized cupertino dialog. Show it by [show()] method or hide by [hide()];
 class CustomMaterialDialog implements IAdaptiveDialog {
+  ///Title string with default TextStyle, will be omitted if [customTitle!=null]
   final String title;
+
+  ///Message string with default TextStyle, will be omitted if [customBody!=null]
   final String message;
+
+  ///Custom title widget in place of title
   final Widget customTitle;
+
+  ///Custom body widget in place of content
   final Widget customBody;
+
+  ///Bottom clickable actions (buttons)
   final List<AdaptiveDialogAction> actions;
+
+  ///Is dialog dismissible by pressing free space around dialog - *default true*
   final bool barrierDismissible;
+
+  ///Whether to center texts (does not work for customTitle and customBody) *default false*
   final bool centerTexts;
-  final bool fullyCapitalized;
-  final Color destructiveColor;
-  final Color backgroundColor;
-  final BorderRadius borderRadius;
+
+  ///Specific route name to operate on that route by Navigator (popUntil, etc.) *default unique by uuid*
   final String routeName;
+
+  ///Fully capitalized actions *default true*
+  final bool fullyCapitalized;
+
+  ///Custom destructive color *default Colors.red[600]*
+  final Color destructiveColor;
+
+  ///Custom background color *default based on theme*
+  final Color backgroundColor;
+
+  ///Custom border radius *default BorderRadius.circular(4)*
+  final BorderRadius borderRadius;
 
   CustomMaterialDialog(
       {this.title,
@@ -24,15 +48,16 @@ class CustomMaterialDialog implements IAdaptiveDialog {
       this.customTitle,
       this.customBody,
       this.actions,
-      this.barrierDismissible = false,
-      this.centerTexts = false,
-      this.fullyCapitalized = true,
+      this.barrierDismissible,
+      this.centerTexts,
+      this.fullyCapitalized,
       this.destructiveColor,
       this.backgroundColor,
       this.borderRadius,
       String routeName})
       : this.routeName = routeName ?? Uuid().v4();
 
+  ///Show the dialog by [showDialog]
   @override
   Future<void> show(BuildContext context) async {
     //Text align for all the texts
@@ -78,6 +103,9 @@ class CustomMaterialDialog implements IAdaptiveDialog {
         });
   }
 
+  ///Hide the dialog by [Navigator.pop] specifing dialog's route name.
+  ///WARNING: If you've set same route name for many dialogs then all the dialogs
+  ///with that [routeName] will be popped
   @override
   void hide(BuildContext context) {
     return Navigator.of(context).popUntil((r) => r.settings.name != routeName);

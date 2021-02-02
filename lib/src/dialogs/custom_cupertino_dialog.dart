@@ -25,7 +25,7 @@ class CustomCupertinoDialog implements IAdaptiveDialog {
   ///Is dialog dismissible by pressing free space around dialog - *default false*
   final bool barrierDismissible;
 
-  ///Whether to center texts (does not work for customTitle and customBody) *default false*
+  ///Whether to center texts (does not work for customTitle and customBody) *default true*
   final bool centerTexts;
 
   ///Specific route name to operate on that route by Navigator (popUntil, etc.) *default unique by uuid*
@@ -45,7 +45,7 @@ class CustomCupertinoDialog implements IAdaptiveDialog {
   ///Show the dialog by [showCupertinoDialog]
   @override
   Future<void> show(BuildContext context) async {
-    //Text align for all the texts
+    //Text align for all the texts (if null then center)
     TextAlign textAlign = (centerTexts == null || centerTexts == true)
         ? TextAlign.center
         : TextAlign.start;
